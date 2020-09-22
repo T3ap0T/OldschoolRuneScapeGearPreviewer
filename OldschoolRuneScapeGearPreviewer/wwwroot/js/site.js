@@ -1,9 +1,4 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
-
-// Write your Javascript code.
-
-// Create a border around a clicked gear image
+﻿// Create a border around a clicked gear image
 function outlineClickedSlot(elem) {
 
     let selectedElement = elem;
@@ -13,12 +8,13 @@ function outlineClickedSlot(elem) {
         // While the list should always be at max 1 long, let it loop through it regardless just in case.
         let activeElements = document.getElementsByClassName("selected-item");
 
+        // Remove the class from the classlist of the element
         for (let ii = 0; ii < activeElements.length; ii++) {
             activeElements[ii].classList.remove("selected-item");
         }
     }
 
-
+    // Add the class to the elements classlist
     selectedElement.classList.add("selected-item");
 
     return true;

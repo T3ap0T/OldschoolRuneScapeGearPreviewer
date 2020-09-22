@@ -107,7 +107,7 @@ body {
     /*color: #ff981f !important;*/
 }
 
-/* Looks kinda uggo */
+/* Looks kinda uggo, also not used at the moment */
 .rs-background-color {
     /* Color aquired by using GIMP2 */
     background-color: #483e33 !important;
@@ -128,12 +128,6 @@ legend.scheduler-border {
     border-bottom: none;
 }
 
-/*
-.test-background {
-    background-image: url("../images/equipment-background.png");
-}
-*/
-
 .cust-table-style {
     margin: 0 auto;
 }
@@ -144,15 +138,7 @@ legend.scheduler-border {
 
 .cust-table-style > tbody > tr > td > img {
     width: 60%;
-    /*height: 125%;*/
 }
-
-/*
-.center-icon {
-    padding-right: 20px !important;
-    padding-left: 20px !important;
-}
-*/
 
 .table td, .table th {
     border-top: 0px solid #dee2e6 !important;
