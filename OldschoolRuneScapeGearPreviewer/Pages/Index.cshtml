@@ -5,6 +5,128 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Rtes</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <div class="container row">
+        <!-- Stats Container -->
+        <div class="col rs-text-color">
+            <div>
+                <div class="cust-bonus-type">Attack bonus</div>
+                <ul class="padding-0 list-main">
+                    <li class="list-item-padding">
+                        Stab: <span id="stab-accuracy-bonus">+0</span>
+                    </li>
+                    <li class="list-item-padding">
+                        Slash: <span id="slash-accuracy-bonus">+0</span>
+                    </li>
+                    <li class="list-item-padding">
+                        Crush: <span id="crush-accuracy-bonus">+0</span>
+                    </li>
+                    <li class="list-item-padding">
+                        Magic: <span id="magic-accuracy-bonus">+0</span>
+                    </li>
+                    <li class="list-item-padding">
+                        Ranged: <span id="ranged-accuracy-bonus">+0</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div>
+                <div class="cust-bonus-type">Defence bonus</div>
+                <ul class="padding-0 list-main">
+                    <li class="list-item-padding">
+                        Stab: <span id="stab-defence-bonus">+0</span>
+                    </li>
+                    <li class="list-item-padding">
+                        Slash: <span id="slash-defence-bonus">+0</span>
+                    </li>
+                    <li class="list-item-padding">
+                        Crush: <span id="crush-defence-bonus">+0</span>
+                    </li>
+                    <li class="list-item-padding">
+                        Magic: <span id="magic-defence-bonus">+0</span>
+                    </li>
+                    <li class="list-item-padding">
+                        Ranged: <span id="ranged-defence-bonus">+0</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div>
+                <div class="cust-bonus-type">Other bonuses</div>
+                <ul class="padding-0 list-main">
+                    <li class="list-item-padding">
+                        Melee strength: <span id="melee-strength-bonus">+0</span>
+                    </li>
+                    <li class="list-item-padding">
+                        Ranged strength: <span id="ranged-strength-bonus">+0</span>
+                    </li>
+                    <li class="list-item-padding">
+                        Magic damage: <span id="magic-damage-bonus">+0.0%</span>
+                    </li>
+                    <li class="list-item-padding">
+                        Prayer: <span id="prayer-bonus">+0</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Gear Container -->
+        <div class="col">
+            <div class="test-background">
+                <table class="table cust-table-style">
+                    <tr>
+                        <td><!-- Empty --></td>
+                        <td class="center-icon"><img class="center-icon invis-border" src="~/images/Head_slot.png" onclick="outlineClickedSlot(this)" /></td>
+                        <td><!-- Empty --></td>
+                    </tr>
+
+                    <tr>
+                        <td><img class="invis-border" src="~/images/Cape_slot.png" onclick="outlineClickedSlot(this)" /></td>
+                        <td class="center-icon"><img class="center-icon invis-border" src="~/images/Neck_slot.png" onclick="outlineClickedSlot(this)" /></td>
+                        <td><img class="invis-border" src="~/images/Ammo_slot.png" onclick="outlineClickedSlot(this)" /></td>
+                    </tr>
+
+                    <tr>
+                        <td><img class="invis-border" src="~/images/Weapon_slot.png" onclick="outlineClickedSlot(this)" /></td>
+                        <td class="center-icon"><img class="center-icon invis-border" src="~/images/Body_slot.png" onclick="outlineClickedSlot(this)" /></td>
+                        <td><img class="invis-border" src="~/images/Shield_slot.png" onclick="outlineClickedSlot(this)" /></td>
+                    </tr>
+
+                    <tr>
+                        <td><!-- Empty --></td>
+                        <td class="center-icon"><img class="center-icon invis-border" src="~/images/Legs_slot.png" onclick="outlineClickedSlot(this)" /></td>
+                        <td><!-- Empty --></td>
+                    </tr>
+
+                    <tr>
+                        <td><img class="invis-border" src="~/images/Hands_slot.png" onclick="outlineClickedSlot(this)" /></td>
+                        <td class="center-icon"><img class="center-icon invis-border" src="~/images/Feet_slot.png" onclick="outlineClickedSlot(this)" /></td>
+                        <td><img class="invis-border" src="~/images/Ring_slot.png" onclick="outlineClickedSlot(this)" /></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- Selecter & Save Container -->
+        <div class="col">
+            <div>
+                <input type="text" id="txtSearchDropdown" class="search-dropdown" />
+                <select id="selectDropdown" size="5" class="dropdown-gear">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                </select>
+            </div>
+        </div>
+    </div>
 </div>

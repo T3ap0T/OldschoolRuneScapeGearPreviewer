@@ -69,3 +69,113 @@ body {
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
 }
+
+/* Custom Stylings */
+
+.no-border {
+    border: none !important;
+}
+
+.small-padding {
+    padding: .3rem .5rem !important;
+}
+
+.padding-0 {
+    padding: 0 !important;
+}
+
+.cust-bonus-type {
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.list-main {
+    text-align: left;
+    list-style: none;
+}
+
+.list-item-padding {
+    padding-left: 40% !important;
+}
+
+.text-align-right {
+    text-align: right !important;
+}
+
+.rs-text-color {
+    /* Color aquired by using GIMP2 */
+    /*color: #ff981f !important;*/
+}
+
+/* Looks kinda uggo */
+.rs-background-color {
+    /* Color aquired by using GIMP2 */
+    background-color: #483e33 !important;
+}
+
+.cust-fieldset-styling {
+    min-width: 0;
+    padding: 0;
+    margin: 0;
+    border-bottom: 0px !important;
+    border-right: 0px !important;
+    border-left: 0px !important;
+}
+
+legend.scheduler-border {
+    width: inherit; /* Or auto */
+    padding: 0 10px; /* To give a bit of padding on the left and right */
+    border-bottom: none;
+}
+
+/*
+.test-background {
+    background-image: url("../images/equipment-background.png");
+}
+*/
+
+.cust-table-style {
+    margin: 0 auto;
+}
+
+.cust-table-style > tbody > tr > td {
+    padding: 10px;
+}
+
+.cust-table-style > tbody > tr > td > img {
+    width: 60%;
+    /*height: 125%;*/
+}
+
+/*
+.center-icon {
+    padding-right: 20px !important;
+    padding-left: 20px !important;
+}
+*/
+
+.table td, .table th {
+    border-top: 0px solid #dee2e6 !important;
+}
+
+table td {
+    white-space: nowrap;
+}
+
+.search-dropdown {
+    width: 50%;
+    margin: 0 auto;
+}
+
+.dropdown-gear {
+    margin: 0 auto;
+    min-width: 50%;
+}
+
+.selected-item {
+    border: 2px solid red !important;
+}
+
+.invis-border {
+    border: 2px solid transparent;
+}
