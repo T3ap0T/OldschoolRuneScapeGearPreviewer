@@ -18,9 +18,19 @@ namespace OSGPLogic
 
         private List<Setup> Setups { get; set; }
 
-
+        /// <summary>
+        /// Empty Constructor
+        /// </summary>
         public User() { }
 
+        /// <summary>
+        /// Full Constructor
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="email"></param>
+        /// <param name="password"></param>
+        /// <param name="admin"></param>
+        /// <param name="setups"></param>
         public User(string username, string email, string password, bool admin, List<Setup> setups)
         {
             this.Username = username;
@@ -46,6 +56,15 @@ namespace OSGPLogic
         public bool updateUser()
         {
             return true;
+        }
+
+        /// <summary>
+        /// Retrieves a setup
+        /// </summary>
+        /// <returns></returns>
+        public Setup getSetup()
+        {
+            return new Setup();
         }
     }
 }

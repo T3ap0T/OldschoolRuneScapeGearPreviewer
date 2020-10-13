@@ -41,8 +41,30 @@ namespace OSGPLogic
 
         public int PrayerBonus{ get; set; }
 
+        /// <summary>
+        /// Empty Constructor
+        /// </summary>
         public Item() { }
 
+        /// <summary>
+        /// Full Constructor
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="type"></param>
+        /// <param name="stabacc"></param>
+        /// <param name="slashacc"></param>
+        /// <param name="crushacc"></param>
+        /// <param name="rangeacc"></param>
+        /// <param name="magicacc"></param>
+        /// <param name="stabdef"></param>
+        /// <param name="slashdef"></param>
+        /// <param name="crushdef"></param>
+        /// <param name="rangeddef"></param>
+        /// <param name="magicdef"></param>
+        /// <param name="strengthbonus"></param>
+        /// <param name="rangedstrength"></param>
+        /// <param name="magicstrength"></param>
+        /// <param name="prayerbonus"></param>
         public Item(string name, string type, int stabacc, int slashacc, int crushacc, int rangeacc, int magicacc,
                     int stabdef, int slashdef, int crushdef, int rangeddef, int magicdef,
                     int strengthbonus, int rangedstrength, int magicstrength, int prayerbonus)
