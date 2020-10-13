@@ -15,8 +15,17 @@ namespace OSGPLogic
 
         private List<Item> Items { get; set; }
 
+        /// <summary>
+        /// Empty Constructor
+        /// </summary>
         public Setup() { }
 
+        /// <summary>
+        /// Full Constructor
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="_public"></param>
+        /// <param name="items"></param>
         public Setup(string name, bool _public, List<Item> items)
         {
             this.Name = name;
