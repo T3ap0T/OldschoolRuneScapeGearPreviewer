@@ -40,8 +40,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Item.cs" />
+    <Compile Include="ItemContainer.cs" />
     <Compile Include="Setup.cs" />
     <Compile Include="User.cs" />
+    <Compile Include="UserContainer.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OSGPAPI\OSGPAPI.csproj">
+      <Project>{b1697fdd-4f8d-4ebb-9d21-42301e7190f8}</Project>
+      <Name>OSGPAPI</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
