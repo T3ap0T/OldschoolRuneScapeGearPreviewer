@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OSGPView", "OldschoolRuneSc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSGPLogic", "OSGPLogic\OSGPLogic.csproj", "{3DB767D1-B0DD-42AB-A233-CA233F8D7F8E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSGPAPI", "OSGPAPI\OSGPAPI.csproj", "{B1697FDD-4F8D-4EBB-9D21-42301E7190F8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OSGPAPI", "OSGPAPI\OSGPAPI.csproj", "{B1697FDD-4F8D-4EBB-9D21-42301E7190F8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSGPData", "OSGPData\OSGPData.csproj", "{EF21F53D-438B-4E2D-9DD4-7C11CB1ABEBB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{B1697FDD-4F8D-4EBB-9D21-42301E7190F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B1697FDD-4F8D-4EBB-9D21-42301E7190F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B1697FDD-4F8D-4EBB-9D21-42301E7190F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF21F53D-438B-4E2D-9DD4-7C11CB1ABEBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF21F53D-438B-4E2D-9DD4-7C11CB1ABEBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF21F53D-438B-4E2D-9DD4-7C11CB1ABEBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF21F53D-438B-4E2D-9DD4-7C11CB1ABEBB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
