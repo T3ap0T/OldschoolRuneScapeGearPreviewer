@@ -9,37 +9,37 @@ namespace OSGPLogic
 {
     class Item
     {
-        public string Name { get; set; }
+        private string Name { get; set; }
 
-        public string Type { get; set; }
+        private string Type { get; set; }
 
-        public int StabAcc { get; set; }
+        private int StabAcc { get; set; }
 
-        public int SlashAcc { get; set; }
+        private int SlashAcc { get; set; }
 
-        public int CrushAcc { get; set; }
+        private int CrushAcc { get; set; }
 
-        public int MagicAcc { get; set; }
+        private int MagicAcc { get; set; }
 
-        public int RangedAcc { get; set; }
+        private int RangedAcc { get; set; }
 
-        public int StabDef { get; set; }
+        private int StabDef { get; set; }
 
-        public int SlashDef { get; set; }
+        private int SlashDef { get; set; }
 
-        public int CrushDef { get; set; }
+        private int CrushDef { get; set; }
 
-        public int MagicDef { get; set; }
+        private int MagicDef { get; set; }
 
-        public int RangedDef { get; set; }
+        private int RangedDef { get; set; }
 
-        public int StrengthBonus { get; set; }
+        private int StrengthBonus { get; set; }
 
-        public int RangedStrength { get; set; }
+        private int RangedStrength { get; set; }
 
-        public int MagicStrength { get; set; }
+        private int MagicStrength { get; set; }
 
-        public int PrayerBonus{ get; set; }
+        private int PrayerBonus{ get; set; }
 
         /// <summary>
         /// Empty Constructor

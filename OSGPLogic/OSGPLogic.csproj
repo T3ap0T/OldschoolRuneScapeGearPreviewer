@@ -50,6 +50,10 @@
       <Project>{b1697fdd-4f8d-4ebb-9d21-42301e7190f8}</Project>
       <Name>OSGPAPI</Name>
     </ProjectReference>
+    <ProjectReference Include="..\OSGPData\OSGPData.csproj">
+      <Project>{ef21f53d-438b-4e2d-9dd4-7c11cb1abebb}</Project>
+      <Name>OSGPData</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
