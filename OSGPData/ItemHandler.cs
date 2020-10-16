@@ -1,11 +1,12 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Text;
 
 namespace OSGPData
 {
-    class ItemHandler
+    public class ItemHandler
     {
         /// <summary>
         /// Update an item in the database
@@ -38,9 +39,25 @@ namespace OSGPData
         /// retrieves an item by its name
         /// </summary>
         /// <returns></returns>
-        public DataTable getItemByName()
+        public DataTable getItemByName(string itemName)
         {
-            return new DataTable();
+            // Create empty datatable so we can fill it and return it
+            DataTable dataTable = new DataTable();
+
+            using (var cmd = new MySqlCommand())
+            {
+                cmd.Connection = Connection.connect();
+
+                cmd.CommandText = "SELECT * FROM item WHERE Name = @name";
+                cmd.Parameters.AddWithValue("@name", itemName);
+
+                using (MySqlDataReader dr = cmd.ExecuteReader())
+                {
+                    dataTable.Load(dr);
+                }
+            }
+
+            return dataTable;
         }
 
         /// <summary>

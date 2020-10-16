@@ -1,22 +1,47 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using OSGPData;
 
 namespace OSGPLogic
 {
-    class ItemContainer
+    public class ItemContainer
     {
         private List<Item> items { get; set; }
 
         /// <summary>
         /// Converts a datasource to a usable logic class
+        /// Not sure if this is the way I'll end up doing it. Looks like a hacky solution.
         /// </summary>
         /// <returns></returns>
-        public Item dataSourceToItem()
+        public Item dataSourceToItem(DataTable itemTable)
         {
-            return new Item();
+            // This will work considering we only request 1 item, thus only having 1 row
+            DataRow dataRow = itemTable.Rows[0];
+
+            Item item = new Item(
+                dataRow["name"].ToString(),
+                dataRow["Type"].ToString(),
+                Convert.ToInt32(dataRow["StabAcc"]),
+                Convert.ToInt32(dataRow["SlashAcc"]),
+                Convert.ToInt32(dataRow["CrushAcc"]),
+                Convert.ToInt32(dataRow["MagicAcc"]),
+                Convert.ToInt32(dataRow["RangedAcc"]),
+                Convert.ToInt32(dataRow["StabDef"]),
+                Convert.ToInt32(dataRow["SlashDef"]),
+                Convert.ToInt32(dataRow["CrushDef"]),
+                Convert.ToInt32(dataRow["MagicDef"]),
+                Convert.ToInt32(dataRow["RangedDef"]),
+                Convert.ToInt32(dataRow["StrengthBonus"]),
+                Convert.ToInt32(dataRow["RangedStrength"]),
+                Convert.ToInt32(dataRow["MagicStrength"]),
+                Convert.ToInt32(dataRow["PrayerBonus"])
+            );
+
+            return item;
         }
 
         /// <summary>
@@ -32,9 +57,16 @@ namespace OSGPLogic
         /// Gets the item object by its name
         /// </summary>
         /// <returns></returns>
-        public Item getItemByName()
+        public Item getItemByName(string itemName)
         {
-            return new Item();
+            // Declare an empty handler so we can use it
+            ItemHandler itemHandler = new ItemHandler();
+            DataTable itemTable = itemHandler.getItemByName(itemName);
+
+            // Convert the datatable to a usable logic class
+            Item item = dataSourceToItem(itemTable);
+
+            return item;
         }
         
         /// <summary>
