@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 
 namespace OSGPLogic
 {
-    class Item
+    public class Item
     {
+        #region Variable Declaration
         private string Name { get; set; }
 
         private string Type { get; set; }
@@ -40,6 +41,89 @@ namespace OSGPLogic
         private int MagicStrength { get; set; }
 
         private int PrayerBonus{ get; set; }
+        #endregion
+
+        #region Getters
+        public string name
+        {
+            get { return Name; }   // get method
+        }
+
+        public string type
+        {
+            get { return Type; }   // get method
+        }
+
+        public int stabAcc
+        {
+            get { return StabAcc; }   // get method
+        }
+
+        public int slashAcc
+        {
+            get { return SlashAcc; }   // get method
+        }
+
+        public int crushAcc
+        {
+            get { return CrushAcc; }   // get method
+        }
+
+        public int magicAcc
+        {
+            get { return MagicAcc; }   // get method
+        }
+
+        public int rangedAcc
+        {
+            get { return RangedAcc; }   // get method
+        }
+
+        public int stabDef
+        {
+            get { return StabDef; }   // get method
+        }
+
+        public int slashDef
+        {
+            get { return SlashDef; }   // get method
+        }
+
+        public int crushDef
+        {
+            get { return CrushDef; }   // get method
+        }
+
+        public int magicDef
+        {
+            get { return MagicDef; }   // get method
+        }
+
+        public int rangedDef
+        {
+            get { return RangedDef; }   // get method
+        }
+
+        public int strengthBonus
+        {
+            get { return StrengthBonus; }   // get method
+        }
+
+        public int rangedStrength
+        {
+            get { return RangedStrength; }   // get method
+        }
+
+        public int magicStrength
+        {
+            get { return MagicStrength; }   // get method
+        }
+
+        public int prayerBonus
+        {
+            get { return PrayerBonus; }   // get method
+        }
+        #endregion
 
         /// <summary>
         /// Empty Constructor

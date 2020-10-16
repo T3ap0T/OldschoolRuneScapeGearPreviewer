@@ -9,7 +9,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSGPLogic", "OSGPLogic\OSGP
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OSGPAPI", "OSGPAPI\OSGPAPI.csproj", "{B1697FDD-4F8D-4EBB-9D21-42301E7190F8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSGPData", "OSGPData\OSGPData.csproj", "{EF21F53D-438B-4E2D-9DD4-7C11CB1ABEBB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OSGPData", "OSGPData\OSGPData.csproj", "{EF21F53D-438B-4E2D-9DD4-7C11CB1ABEBB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSGPUnitTests", "OSGPUnitTests\OSGPUnitTests.csproj", "{8940CD1A-B64A-45D4-AF89-FCF6A1885A60}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{EF21F53D-438B-4E2D-9DD4-7C11CB1ABEBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EF21F53D-438B-4E2D-9DD4-7C11CB1ABEBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EF21F53D-438B-4E2D-9DD4-7C11CB1ABEBB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8940CD1A-B64A-45D4-AF89-FCF6A1885A60}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8940CD1A-B64A-45D4-AF89-FCF6A1885A60}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8940CD1A-B64A-45D4-AF89-FCF6A1885A60}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8940CD1A-B64A-45D4-AF89-FCF6A1885A60}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
