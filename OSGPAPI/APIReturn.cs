@@ -1,25 +1,27 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace OSGPAPI
 {
     public class APIReturn
     {
-        private string Icon;
+        public string Icon;
 
-        private bool Members;
+        public string Icon_large;
 
-        private string Price;
+        public int Id;
 
-        private string Description;
+        public string Type;
 
-        private string Name;
+        public string TypeIcon;
 
-        private string TypeIcon;
+        public string Name;
 
-        private string Type;
+        public string Description;
 
-        private int Id;
+        public Current current;
 
-        private string Icon_large;
+        public bool Members;
+
     }
 }

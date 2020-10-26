@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using OSGPData;
+using OSGPAPI;
 
 namespace OSGPLogic
 {
@@ -65,6 +66,10 @@ namespace OSGPLogic
 
             // Convert the datatable to a usable logic class
             Item item = dataSourceToItem(itemTable);
+
+            // Item name must be lower case
+            APIContainer apiContainer = new APIContainer();
+            APIReturn apiReturn = apiContainer.GetInfoItem(itemName.ToLower());
 
             return item;
         }

@@ -30,6 +30,7 @@ namespace OSGPData
                                                     $"Database={database};" +
                                                     $"User Id={user};" +
                                                     $"Password={pass};";
+
                 // Open the connection. If I understand this right because this method is only called in the using block.
                 // Because of this the connection gets closed when the using block ends.
                 GeneralConnection.Open();

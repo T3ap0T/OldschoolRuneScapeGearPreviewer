@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -22,11 +23,16 @@ namespace OSGPView.Pages
 
         public void OnGet()
         {
+            Stopwatch stopWatch = new Stopwatch();
+            stopWatch.Start();
+
             ItemContainer itemContainer = new ItemContainer();
 
             item = itemContainer.getItemByName("Helm of Neitiznot");
 
-            Console.WriteLine(item);
+            stopWatch.Stop();
+
+            Console.WriteLine(stopWatch.Elapsed);
         }
     }
 }
