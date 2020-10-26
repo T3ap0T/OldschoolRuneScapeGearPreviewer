@@ -23,8 +23,6 @@ namespace OSGPAPI
 
             using (HttpClient uClient = new HttpClient())
             {
-                Console.WriteLine(APIString + URLParameters + itemName);
-
                 uClient.BaseAddress = new Uri(APIString);
 
                 HttpResponseMessage response = uClient.GetAsync(URLParameters + itemName.Replace(" ", "%20")).Result;
@@ -33,16 +31,11 @@ namespace OSGPAPI
                 // Convert dataObjects.Result to a JSON string
                 JObject json = JObject.Parse(dataObjects.Result);
 
-                Console.WriteLine(json.GetValue("items").First);
-                //Console.WriteLine(Regex.Replace(json["items"].ToString(), @"\[|\]", ""));
-                //Console.WriteLine(json.Last.ToString());
-                //Console.WriteLine(json.Last.First.ToString());
-                //Console.WriteLine(json.Last.First.First.ToString());
+                //Console.WriteLine(json.GetValue("items").First);
 
                 // Get the value of the "items" array and call .First to make sure we're actually in the array
+                // Deserialize it into a APIReturn object and fill APIreturn with the result
                 APIreturn = JsonConvert.DeserializeObject<APIReturn>(json.GetValue("items").First.ToString());
-
-                Console.WriteLine(APIreturn.Name);
             }
 
             return APIreturn;

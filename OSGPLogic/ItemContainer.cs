@@ -20,27 +20,34 @@ namespace OSGPLogic
         /// <returns></returns>
         public Item dataSourceToItem(DataTable itemTable)
         {
-            // This will work considering we only request 1 item, thus only having 1 row
-            DataRow dataRow = itemTable.Rows[0];
+            // Create empty item object
+            Item item = new Item();
 
-            Item item = new Item(
-                dataRow["name"].ToString(),
-                dataRow["Type"].ToString(),
-                Convert.ToInt32(dataRow["StabAcc"]),
-                Convert.ToInt32(dataRow["SlashAcc"]),
-                Convert.ToInt32(dataRow["CrushAcc"]),
-                Convert.ToInt32(dataRow["MagicAcc"]),
-                Convert.ToInt32(dataRow["RangedAcc"]),
-                Convert.ToInt32(dataRow["StabDef"]),
-                Convert.ToInt32(dataRow["SlashDef"]),
-                Convert.ToInt32(dataRow["CrushDef"]),
-                Convert.ToInt32(dataRow["MagicDef"]),
-                Convert.ToInt32(dataRow["RangedDef"]),
-                Convert.ToInt32(dataRow["StrengthBonus"]),
-                Convert.ToInt32(dataRow["RangedStrength"]),
-                Convert.ToInt32(dataRow["MagicStrength"]),
-                Convert.ToInt32(dataRow["PrayerBonus"])
-            );
+            if (itemTable.Rows.Count > 0)
+            {
+                // This will work considering we only request 1 item, thus only having 1 row
+                DataRow dataRow = itemTable.Rows[0];
+
+                item = new Item(
+                    dataRow["name"].ToString(),
+                    dataRow["Type"].ToString(),
+                    Convert.ToInt32(dataRow["StabAcc"]),
+                    Convert.ToInt32(dataRow["SlashAcc"]),
+                    Convert.ToInt32(dataRow["CrushAcc"]),
+                    Convert.ToInt32(dataRow["MagicAcc"]),
+                    Convert.ToInt32(dataRow["RangedAcc"]),
+                    Convert.ToInt32(dataRow["StabDef"]),
+                    Convert.ToInt32(dataRow["SlashDef"]),
+                    Convert.ToInt32(dataRow["CrushDef"]),
+                    Convert.ToInt32(dataRow["MagicDef"]),
+                    Convert.ToInt32(dataRow["RangedDef"]),
+                    Convert.ToInt32(dataRow["StrengthBonus"]),
+                    Convert.ToInt32(dataRow["RangedStrength"]),
+                    Convert.ToInt32(dataRow["MagicStrength"]),
+                    Convert.ToInt32(dataRow["PrayerBonus"])
+                );
+
+            }
 
             return item;
         }

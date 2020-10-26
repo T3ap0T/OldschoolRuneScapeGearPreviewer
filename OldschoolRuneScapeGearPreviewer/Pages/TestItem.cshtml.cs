@@ -28,7 +28,7 @@ namespace OSGPView.Pages
 
             ItemContainer itemContainer = new ItemContainer();
 
-            item = itemContainer.getItemByName("Helm of Neitiznot");
+            item = itemContainer.getItemByName("Abyssal Whip");
 
             stopWatch.Stop();
 
