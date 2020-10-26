@@ -44,6 +44,7 @@ namespace OSGPData
             // Create empty datatable so we can fill it and return it
             DataTable dataTable = new DataTable();
 
+            // Create a using clause so everything will be disposed when the block ends
             using (var cmd = new MySqlCommand())
             {
                 cmd.Connection = Connection.connect();
@@ -51,10 +52,14 @@ namespace OSGPData
                 cmd.CommandText = "SELECT * FROM item WHERE Name = @name";
                 cmd.Parameters.AddWithValue("@name", itemName);
 
+                // Read what we get back and throw it in a datatable for Logic layer use
                 using (MySqlDataReader dr = cmd.ExecuteReader())
                 {
                     dataTable.Load(dr);
                 }
+
+                // Close the connection
+                cmd.Connection.Close();
             }
 
             return dataTable;

@@ -26,8 +26,6 @@ namespace OSGPData
         {
             try
             {
-                disconnect();
-
                 GeneralConnection.ConnectionString = $"Server={host};" +
                                                     $"Database={database};" +
                                                     $"User Id={user};" +
@@ -46,6 +44,10 @@ namespace OSGPData
             }
         }
 
+        /// <summary>
+        /// Closes the current database connection in case it's open
+        /// Currently unused
+        /// </summary>
         private static void disconnect()
         {
             if (GeneralConnection.State.ToString() == "Open")
