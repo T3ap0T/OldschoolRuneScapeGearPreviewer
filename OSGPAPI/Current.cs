@@ -4,7 +4,7 @@ using System.Text;
 
 namespace OSGPAPI
 {
-    class Current
+    public class Current
     {
         public string Trend;
 
