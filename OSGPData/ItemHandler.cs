@@ -45,10 +45,13 @@ namespace OSGPData
             DataTable dataTable = new DataTable();
 
             // Create a using clause so everything will be disposed when the block ends
-            using (var cmd = new MySqlCommand())
+            using (MySqlConnection conn = Connection.getConnection())
             {
-                cmd.Connection = Connection.connect();
+                conn.Open();
 
+                // Create a new MySqlCommand
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = conn;
                 cmd.CommandText = "SELECT * FROM item WHERE Name = @name";
                 cmd.Parameters.AddWithValue("@name", itemName);
 
@@ -59,7 +62,7 @@ namespace OSGPData
                 }
 
                 // Close the connection
-                cmd.Connection.Close();
+                conn.Close();
             }
 
             return dataTable;

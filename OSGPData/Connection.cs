@@ -16,43 +16,15 @@ namespace OSGPData
 
         private static string pass = "";
 
-        private static MySqlConnection GeneralConnection = new MySqlConnection();
+        private static MySqlConnection GeneralConnection = new MySqlConnection($"Server={host};Database={database};User Id={user};Password={pass};");
 
         /// <summary>
-        /// Connect to the database
+        /// Returns the MySqlConnection
         /// </summary>
         /// <returns></returns>
-        public static MySqlConnection connect()
+        public static MySqlConnection getConnection()
         {
-            try
-            {
-                GeneralConnection.ConnectionString = $"Server={host};" +
-                                                    $"Database={database};" +
-                                                    $"User Id={user};" +
-                                                    $"Password={pass};";
-
-                // Open the connection. If I understand this right because this method is only called in the using block.
-                // Because of this the connection gets closed when the using block ends.
-                GeneralConnection.Open();
-
-                return GeneralConnection;
-            }
-            catch (Exception error)
-            {
-                Console.WriteLine(error.Message.ToString());
-
-                return new MySqlConnection();
-            }
-        }
-
-        /// <summary>
-        /// Closes the current database connection in case it's open
-        /// Currently unused
-        /// </summary>
-        private static void disconnect()
-        {
-            if (GeneralConnection.State.ToString() == "Open")
-               GeneralConnection.Close();
+            return GeneralConnection;
         }
     }
 }
