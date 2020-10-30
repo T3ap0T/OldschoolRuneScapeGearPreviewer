@@ -14,11 +14,10 @@ namespace OSGPLogic
         private List<Item> items { get; set; }
 
         /// <summary>
-        /// Converts a datasource to a usable logic class
-        /// Not sure if this is the way I'll end up doing it. Looks like a hacky solution.
+        /// Converts a dataTable to a usable logic class
         /// </summary>
         /// <returns></returns>
-        public Item dataSourceToItem(DataTable itemTable)
+        public Item dataTableToItem(DataTable itemTable)
         {
             // Create empty item object
             Item item = new Item();
@@ -72,11 +71,14 @@ namespace OSGPLogic
             DataTable itemTable = itemHandler.getItemByName(itemName);
 
             // Convert the datatable to a usable logic class
-            Item item = dataSourceToItem(itemTable);
+            Item item = dataTableToItem(itemTable);
 
             // Item name must be lower case
             APIContainer apiContainer = new APIContainer();
             APIReturn apiReturn = apiContainer.GetInfoItem(itemName.ToLower());
+
+            item.price = apiReturn.current.Price;
+            item.imageLink = apiReturn.Icon;
 
             return item;
         }

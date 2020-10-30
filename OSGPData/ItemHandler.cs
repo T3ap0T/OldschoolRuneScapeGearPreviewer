@@ -47,9 +47,10 @@ namespace OSGPData
             // Create a using clause so everything will be disposed when the block ends
             using (MySqlConnection conn = Connection.getConnection())
             {
+                // Open the connection
                 conn.Open();
 
-                // Create a new MySqlCommand
+                // Create a new MySqlCommand, query and parameters
                 MySqlCommand cmd = new MySqlCommand();
                 cmd.Connection = conn;
                 cmd.CommandText = "SELECT * FROM item WHERE Name = @name";

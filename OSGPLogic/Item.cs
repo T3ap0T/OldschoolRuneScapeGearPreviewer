@@ -14,6 +14,10 @@ namespace OSGPLogic
 
         private string Type { get; set; }
 
+        private string Price { get; set; }
+
+        private string ImageLink { get; set; }
+
         private int StabAcc { get; set; }
 
         private int SlashAcc { get; set; }
@@ -43,7 +47,7 @@ namespace OSGPLogic
         private int PrayerBonus{ get; set; }
         #endregion
 
-        #region Getters
+        #region Getters & Setters
         public string name
         {
             get { return Name; }   // get method
@@ -52,6 +56,18 @@ namespace OSGPLogic
         public string type
         {
             get { return Type; }   // get method
+        }
+
+        public string price
+        {
+            get { return Price; }   // get method
+            set { Price = value; } // set method
+        }
+
+        public string imageLink
+        {
+            get { return ImageLink; }   // get method
+            set { ImageLink = value; }
         }
 
         public int stabAcc
@@ -135,6 +151,8 @@ namespace OSGPLogic
         /// </summary>
         /// <param name="name"></param>
         /// <param name="type"></param>
+        /// <param name="price"></param>
+        /// <param name="imageLink"></param>
         /// <param name="stabacc"></param>
         /// <param name="slashacc"></param>
         /// <param name="crushacc"></param>
@@ -151,7 +169,8 @@ namespace OSGPLogic
         /// <param name="prayerbonus"></param>
         public Item(string name, string type, int stabacc, int slashacc, int crushacc, int rangeacc, int magicacc,
                     int stabdef, int slashdef, int crushdef, int rangeddef, int magicdef,
-                    int strengthbonus, int rangedstrength, int magicstrength, int prayerbonus)
+                    int strengthbonus, int rangedstrength, int magicstrength, int prayerbonus,
+                    string price = "", string imageLink = "")
         {
             this.Name = name;
             this.Type = type;
@@ -169,6 +188,8 @@ namespace OSGPLogic
             this.RangedStrength = rangedstrength;
             this.MagicStrength = magicstrength;
             this.PrayerBonus = prayerbonus;
+            this.Price = price;
+            this.ImageLink = imageLink;
         }
 
         /// <summary>
