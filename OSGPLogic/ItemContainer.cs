@@ -52,6 +52,41 @@ namespace OSGPLogic
         }
 
         /// <summary>
+        /// Converts a DataTable to a list of Item objects
+        /// </summary>
+        /// <param name="itemTable"></param>
+        /// <returns></returns>
+        public List<Item> dataTableToList(DataTable itemTable)
+        {
+            List<Item> ItemList = new List<Item>();
+
+            foreach(DataRow row in itemTable.Rows)
+            {
+                ItemList.Add(new Item(
+                        row["name"].ToString(),
+                        row["Type"].ToString(),
+                        Convert.ToInt32(row["StabAcc"]),
+                        Convert.ToInt32(row["SlashAcc"]),
+                        Convert.ToInt32(row["CrushAcc"]),
+                        Convert.ToInt32(row["MagicAcc"]),
+                        Convert.ToInt32(row["RangedAcc"]),
+                        Convert.ToInt32(row["StabDef"]),
+                        Convert.ToInt32(row["SlashDef"]),
+                        Convert.ToInt32(row["CrushDef"]),
+                        Convert.ToInt32(row["MagicDef"]),
+                        Convert.ToInt32(row["RangedDef"]),
+                        Convert.ToInt32(row["StrengthBonus"]),
+                        Convert.ToInt32(row["RangedStrength"]),
+                        Convert.ToInt32(row["MagicStrength"]),
+                        Convert.ToInt32(row["PrayerBonus"])
+                    )
+                );
+            }
+
+            return ItemList;
+        }
+
+        /// <summary>
         /// Creates a new item in the database
         /// </summary>
         /// <returns></returns>
@@ -109,6 +144,16 @@ namespace OSGPLogic
         public List<Item> getSetupItems()
         {
             return new List<Item>();
+        }
+
+        public List<Item> getItemsFromType(string type)
+        {
+            ItemHandler itemHandler = new ItemHandler();
+            DataTable itemsByType = itemHandler.getItemsFromType(type);
+
+            List<Item> itemList = this.dataTableToList(itemsByType);
+
+            return itemList;
         }
     }
 }

@@ -1,7 +1,8 @@
 ﻿@page
+@Html.AntiForgeryToken()
 @model IndexModel
 @{
-    ViewData["Title"] = "Home - RuneScape Gear Previewer";
+    ViewData["Title"] = "Home - Oldschool RuneScape Gear Previewer";
 }
 
 <div class="text-center">
@@ -75,7 +76,7 @@
                 <table class="table cust-table-style">
                     <tr>
                         <td><!-- Empty --></td>
-                        <td class="center-icon"><img class="center-icon invis-border" src="~/images/Head_slot.png" onclick="outlineClickedSlot(this)" /></td>
+                        <td class="center-icon"><img class="center-icon invis-border" src="~/images/Head_slot.png" onclick="outlineClickedSlot(this), getItems('Helmet')" /></td>
                         <td><!-- Empty --></td>
                     </tr>
 

@@ -95,5 +95,40 @@ namespace OSGPData
         {
             return new DataTable();
         }
+
+        /// <summary>
+        /// Retrieve all the items from one type
+        /// </summary>
+        /// <param name="type"></param>
+        /// <returns></returns>
+        public DataTable getItemsFromType(string type)
+        {
+            // Create empty datatable so we can fill it and return it
+            DataTable dataTable = new DataTable();
+
+            // Create a using clause so everything will be disposed when the block ends
+            using (MySqlConnection conn = Connection.getConnection())
+            {
+                // Open the connection
+                conn.Open();
+
+                // Create a new MySqlCommand, query and parameters
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = conn;
+                cmd.CommandText = "SELECT * FROM item WHERE Type = @type";
+                cmd.Parameters.AddWithValue("@type", type);
+
+                // Read what we get back and throw it in a datatable for Logic layer use
+                using (MySqlDataReader dr = cmd.ExecuteReader())
+                {
+                    dataTable.Load(dr);
+                }
+
+                // Close the connection
+                conn.Close();
+            }
+
+            return dataTable;
+        }
     }
 }

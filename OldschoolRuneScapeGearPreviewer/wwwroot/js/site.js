@@ -19,3 +19,27 @@ function outlineClickedSlot(elem) {
 
     return true;
 }
+
+// Retrieve all the items with that type
+function getItems(type) {
+
+    var dataValue = { "type": type };
+
+    $.ajax({
+        type: "GET",
+        url: "/Index?handler=Items",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        data: { "Type": type },
+        headers: {
+            RequestVerificationToken:
+                $('input:hidden[name="__RequestVerificationToken"]').val()
+        },
+        error: function (error) {
+            console.log(error);
+        },
+        success: function (result) {
+            console.log("We returned: " + result);
+        }
+    });
+}
