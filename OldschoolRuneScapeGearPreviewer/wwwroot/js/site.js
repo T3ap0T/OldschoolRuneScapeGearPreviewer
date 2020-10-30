@@ -22,9 +22,6 @@ function outlineClickedSlot(elem) {
 
 // Retrieve all the items with that type
 function getItems(type) {
-
-    var dataValue = { "type": type };
-
     $.ajax({
         type: "GET",
         url: "/Index?handler=Items",
@@ -39,7 +36,25 @@ function getItems(type) {
             console.log(error);
         },
         success: function (result) {
-            console.log("We returned: " + result);
+            let selectDropdown = document.getElementById("selectDropdown");
+
+            // Clear the dropdownlist options first
+            let i, L = selectDropdown.options.length - 1;
+            for (i = L; i >= 0; i--) {
+                selectDropdown.remove(i);
+            }
+
+            console.log(JSON.parse(result));
+
+            let JSONResult = JSON.parse(result);
+
+            for (let ii = 0; ii < JSONResult.length; ii++) {
+                var option = document.createElement('option');
+                option.text = JSONResult[ii].name;
+                option.value = JSONResult[ii].name;
+
+                selectDropdown.add(option, 0);
+            }
         }
     });
 }

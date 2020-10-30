@@ -29,11 +29,6 @@ namespace OldschoolRuneScapeGearPreviewer.Pages
             ItemContainer itemContainer = new ItemContainer();
             List<Item> itemList = itemContainer.getItemsFromType(Type);
 
-            foreach(Item item in itemList)
-            {
-                Console.WriteLine(item.name);
-            }
-
             return new JsonResult(JsonSerializer.Serialize(itemList));
         }
 
