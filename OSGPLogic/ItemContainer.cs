@@ -77,6 +77,7 @@ namespace OSGPLogic
             APIContainer apiContainer = new APIContainer();
             APIReturn apiReturn = apiContainer.GetInfoItem(itemName.ToLower());
 
+            // Insert the data we need from the API return into the new Item object
             item.price = apiReturn.current.Price;
             item.imageLink = apiReturn.Icon;
 

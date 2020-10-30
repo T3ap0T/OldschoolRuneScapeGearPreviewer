@@ -18,6 +18,11 @@ namespace OSGPAPI
         /// <returns></returns>
         public APIReturn GetInfoItem(string itemName)
         {
+            //
+            // NOTE: The API adds a very noticable load delay to the application.
+            // The delay is generally half a second. Will look into ways to speed it up.
+            //
+
             // Create an empty APIReturn so we can fill it
             APIReturn APIreturn = new APIReturn();
 
