@@ -5,23 +5,23 @@ namespace OSGPAPI
 {
     public class APIReturn
     {
-        public string Icon;
+        public string Icon { get; set; }
 
-        public string Icon_large;
+        public string Icon_large { get; set; }
 
-        public int Id;
+        public int Id { get; set; }
 
-        public string Type;
+        public string Type { get; set; }
 
-        public string TypeIcon;
+        public string TypeIcon { get; set; }
 
-        public string Name;
+        public string Name { get; set; }
 
-        public string Description;
+        public string Description { get; set; }
 
-        public Current current;
+        public Current current { get; set; }
 
-        public bool Members;
+        public bool Members { get; set; }
 
     }
 }

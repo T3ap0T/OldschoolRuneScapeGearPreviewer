@@ -68,13 +68,13 @@ namespace OSGPLogic
                         Convert.ToInt32(row["StabAcc"]),
                         Convert.ToInt32(row["SlashAcc"]),
                         Convert.ToInt32(row["CrushAcc"]),
-                        Convert.ToInt32(row["MagicAcc"]),
                         Convert.ToInt32(row["RangedAcc"]),
+                        Convert.ToInt32(row["MagicAcc"]),
                         Convert.ToInt32(row["StabDef"]),
                         Convert.ToInt32(row["SlashDef"]),
                         Convert.ToInt32(row["CrushDef"]),
-                        Convert.ToInt32(row["MagicDef"]),
                         Convert.ToInt32(row["RangedDef"]),
+                        Convert.ToInt32(row["MagicDef"]),
                         Convert.ToInt32(row["StrengthBonus"]),
                         Convert.ToInt32(row["RangedStrength"]),
                         Convert.ToInt32(row["MagicStrength"]),
@@ -109,8 +109,7 @@ namespace OSGPLogic
             Item item = dataTableToItem(itemTable);
 
             // Item name must be lower case
-            APIContainer apiContainer = new APIContainer();
-            APIReturn apiReturn = apiContainer.GetInfoItem(itemName.ToLower());
+            APIReturn apiReturn = APIContainer.GetInfoItem(itemName.ToLower());
 
             // Insert the data we need from the API return into the new Item object
             item.price = apiReturn.current.Price;

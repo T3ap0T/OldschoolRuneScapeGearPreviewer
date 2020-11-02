@@ -7,6 +7,9 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using OSGPLogic;
 using System.Text.Json;
+using System.Diagnostics;
+using OSGPAPI;
+using Google.Protobuf.WellKnownTypes;
 
 namespace OldschoolRuneScapeGearPreviewer.Pages
 {
@@ -30,6 +33,25 @@ namespace OldschoolRuneScapeGearPreviewer.Pages
             List<Item> itemList = itemContainer.getItemsFromType(Type);
 
             return new JsonResult(JsonSerializer.Serialize(itemList));
+        }
+
+        /// <summary>
+        /// AJAX call to get the price and imagelink for an item
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public JsonResult OnGetItem(string name)
+        {
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
+
+            APIReturn apiReturn = APIContainer.GetInfoItem(name.ToLower());
+
+            stopwatch.Stop();
+
+            Console.WriteLine(stopwatch.Elapsed);
+
+            return new JsonResult(JsonSerializer.Serialize(apiReturn));
         }
 
         public void OnGet()
