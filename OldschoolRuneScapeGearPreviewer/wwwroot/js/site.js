@@ -176,7 +176,9 @@ function updateBonusses(oldItem, newItem) {
 
         prayerBonus.innerHTML = parseInt(prayerBonus.innerHTML) + - selectedItems[type].prayerBonus + newItem.prayerBonus;
 
-    } else if (!oldItem) {
+    }
+    else if (!oldItem)
+    {
         // Stats can be increased by the new item stats without any other calculations
         // Replace the HTML by what was already there + the new stats
         stabAcc.innerHTML = parseInt(stabAcc.innerHTML.match(RegExDigits)) + newItem.stabAcc;
@@ -194,7 +196,9 @@ function updateBonusses(oldItem, newItem) {
         magicDamage.innerHTML = parseInt(magicDamage.innerHTML.match(RegExDigits)) + newItem.magicStrength;
         prayerBonus.innerHTML = parseInt(prayerBonus.innerHTML.match(RegExDigits)) + newItem.prayerBonus;
 
-    } else {
+    }
+    else
+    {
         // There was an old item in the slot so have to remove those stats
         // Replace the HTML by what was already there - the old stats + the new stats
 
@@ -235,4 +239,72 @@ function updateBonusses(oldItem, newItem) {
 
         prayerBonus.innerHTML = parseInt(prayerBonus.innerHTML) + - oldItem.prayerBonus + newItem.prayerBonus;
     }
+}
+
+//
+// User related methods
+//
+
+function registerUser() {
+    let email = document.getElementById("registerEmail").value;
+    let username = document.getElementById("registerUsername").value;
+    let password = document.getElementById("registerPassword").value;
+
+    $.ajax({
+        type: "GET",
+        url: "/Index?handler=Register",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        data: {
+            "email": email,
+            "username": username,
+            "password": password
+        },
+        headers: {
+            RequestVerificationToken:
+                $('input:hidden[name="__RequestVerificationToken"]').val()
+        },
+        error: function (error) {
+            console.log(error);
+        },
+        success: function (result) {
+            console.log(result);
+            // If the result contains the word "Failed" something went wrong and we have to not show a success alert.
+            if (result.includes("Failed")) {
+                document.getElementById("modalResult").classList.add("alert-danger");
+            } else {
+                document.getElementById("modalResult").classList.add("alert-success");
+            }
+
+            document.getElementById("modalResult").innerHTML = result;
+            document.getElementById("modalResult").classList.add("alert");
+        }
+    });
+}
+
+function loginUser() {
+    let email = document.getElementById("loginEmail").value;
+    let password = document.getElementById("loginPassword").value;
+
+    $.ajax({
+        type: "GET",
+        url: "/Index?handler=Login",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        data: {
+            "email": email,
+            "password": password
+        },
+        headers: {
+            RequestVerificationToken:
+                $('input:hidden[name="__RequestVerificationToken"]').val()
+        },
+        error: function (error) {
+            console.log(error);
+        },
+        success: function (result) {
+            console.log(result);
+            window.location.reload();
+        }
+    });
 }

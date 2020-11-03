@@ -10,6 +10,9 @@ using System.Text.Json;
 using System.Diagnostics;
 using OSGPAPI;
 using Google.Protobuf.WellKnownTypes;
+using MySqlX.XDevAPI.Common;
+using MySqlX.XDevAPI;
+using Microsoft.AspNetCore.Http;
 
 namespace OldschoolRuneScapeGearPreviewer.Pages
 {
@@ -54,9 +57,65 @@ namespace OldschoolRuneScapeGearPreviewer.Pages
             return new JsonResult(JsonSerializer.Serialize(apiReturn));
         }
 
+        public JsonResult OnGetRegister(string email, string username, string password)
+        {
+            UserContainer userContainer = new UserContainer();
+
+            string registerUser = userContainer.createUser(email, username, password);
+
+            return new JsonResult(registerUser);
+        }
+
+        /// <summary>
+        /// Handle login related stuff
+        /// </summary>
+        /// <param name="email"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
+        public IActionResult OnGetLogin(string email, string password)
+        {
+            UserContainer userContainer = new UserContainer();
+            string resultString = "";
+
+            User user = userContainer.login(email);
+
+
+            if (user.checkPassword(password))
+            {
+                // user has succesfully logged in.
+                // Set some session stuff
+                HttpContext.Session.SetString("Email", user.email);
+                HttpContext.Session.SetString("Username", user.userName);
+                HttpContext.Session.SetInt32("Admin", Convert.ToInt32(user.admin));
+                HttpContext.Session.SetInt32("LoggedIn", 1);
+
+                resultString = "Success";
+            }
+            else
+            {
+                resultString = "Fail";
+            }
+
+            return new JsonResult(resultString);
+        }
+
+        /// <summary>
+        /// Always called when the page loads
+        /// </summary>
         public void OnGet()
         {
+            // This does not function yet
 
+            // Due to this method always being called when the page loads we can do some ViewData stuff
+            if (BitConverter.ToBoolean(HttpContext.Session.Get("LoggedIn")))
+            {
+                ViewData["LoggedIn"] = 1;
+                ViewData["Username"] = HttpContext.Session.GetString("Username");
+            }
+            else
+            {
+                ViewData["LoggedIn"] = 0;
+            }
         }
     }
 }

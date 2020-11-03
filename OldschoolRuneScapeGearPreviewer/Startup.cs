@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Options;
 
 namespace OldschoolRuneScapeGearPreviewer
 {
@@ -26,6 +27,12 @@ namespace OldschoolRuneScapeGearPreviewer
             services.AddRazorPages();
 
             services.AddRazorPages().AddRazorRuntimeCompilation();
+
+            // Set timeout for 1 hour
+            services.AddSession(
+                options => 
+                    options.IdleTimeout = TimeSpan.FromMinutes(60)
+            ); ;
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -44,6 +51,9 @@ namespace OldschoolRuneScapeGearPreviewer
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+
+            // Enable sessions
+            app.UseSession();
 
             app.UseRouting();
 

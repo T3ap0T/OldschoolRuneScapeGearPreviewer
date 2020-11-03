@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace OSGPLogic
 {
-    class Setup
+    public class Setup
     {
         private string Name { get; set; }
 
