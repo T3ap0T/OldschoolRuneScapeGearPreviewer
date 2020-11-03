@@ -90,7 +90,8 @@ function selectItem(name) {
     updateBonusses(oldItem, newItem);
 
     // Update the selectedItems object to instead use the newly selected item
-    selectedItems[selectedSlot] = newItem;
+    selectedItems[selectedSlot.id] = newItem;
+    console.log(selectedItems);
 
     // We don't retrieve the price and icon when we retrieve the initial list (because a list of 20 items would take 10 seconds to load)
     // Instead we retrieve them when they are needed
@@ -137,8 +138,45 @@ function updateBonusses(oldItem, newItem) {
     let magicDamage = document.getElementById("magic-damage-bonus");
     let prayerBonus = document.getElementById("prayer-bonus");
 
-    // Change the stats!
-    if (!oldItem) {
+    // Change the stats
+    // This if must be first in line
+    if (Object.keys(selectedItems[newItem.type.toLocaleLowerCase()]).length !== 0) { 
+        // There also exists a case where the user can switch between item slots and the oldItem and newItem will not be properly alligned.
+        // For this we need to look at the selectedItems property.
+
+        let type = newItem.type.toLocaleLowerCase();
+        // Accuracy
+        stabAcc.innerHTML = parseInt(stabAcc.innerHTML) + - selectedItems[type].stabAcc + newItem.stabAcc;
+
+        slashAcc.innerHTML = parseInt(slashAcc.innerHTML) + - selectedItems[type].slashAcc + newItem.slashAcc;
+
+        crushAcc.innerHTML = parseInt(crushAcc.innerHTML) + - selectedItems[type].crushAcc + newItem.crushAcc;
+
+        magicAcc.innerHTML = parseInt(magicAcc.innerHTML) + - selectedItems[type].magicAcc + newItem.magicAcc;
+
+        rangedAcc.innerHTML = parseInt(rangedAcc.innerHTML) + - selectedItems[type].rangedAcc + newItem.rangedAcc;
+
+        // Defence 
+        stabDef.innerHTML = parseInt(stabDef.innerHTML) + - selectedItems[type].stabDef + newItem.stabDef;
+
+        slashDef.innerHTML = parseInt(slashDef.innerHTML) + - selectedItems[type].slashDef + newItem.slashDef;
+
+        crushDef.innerHTML = parseInt(crushDef.innerHTML) + - selectedItems[type].crushDef + newItem.crushDef;
+
+        magicDef.innerHTML = parseInt(magicDef.innerHTML) + - selectedItems[type].magicDef + newItem.magicDef;
+
+        rangedDef.innerHTML = parseInt(rangedDef.innerHTML) + - selectedItems[type].rangedDef + newItem.rangedDef;
+
+        // Strength
+        meleeStrength.innerHTML = parseInt(meleeStrength.innerHTML) + - selectedItems[type].strengthBonus + newItem.strengthBonus;
+
+        rangedStrength.innerHTML = parseInt(rangedStrength.innerHTML) + - selectedItems[type].rangedStrength + newItem.rangedStrength;
+
+        magicDamage.innerHTML = parseInt(magicDamage.innerHTML) + - selectedItems[type].magicStrength + newItem.magicStrength;
+
+        prayerBonus.innerHTML = parseInt(prayerBonus.innerHTML) + - selectedItems[type].prayerBonus + newItem.prayerBonus;
+
+    } else if (!oldItem) {
         // Stats can be increased by the new item stats without any other calculations
         // Replace the HTML by what was already there + the new stats
         stabAcc.innerHTML = parseInt(stabAcc.innerHTML.match(RegExDigits)) + newItem.stabAcc;
