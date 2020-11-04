@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using OSGPData;
 using OSGPAPI;
+using AutoMapper;
 
 namespace OSGPLogic
 {
@@ -14,39 +15,18 @@ namespace OSGPLogic
         private List<Item> items { get; set; }
 
         /// <summary>
-        /// Converts a dataTable to a usable logic class
+        /// Converts a DTO object to a logic class
         /// </summary>
         /// <returns></returns>
-        public Item dataTableToItem(DataTable itemTable)
+        public Item itemDTOToItem(ItemDTO itemDTO)
         {
             // Create empty item object
             Item item = new Item();
 
-            if (itemTable.Rows.Count > 0)
-            {
-                // This will work considering we only request 1 item, thus only having 1 row
-                DataRow dataRow = itemTable.Rows[0];
+            MapperConfiguration config = new MapperConfiguration(cfg => cfg.CreateMap<ItemDTO, Item>());
+            Mapper mapper = new Mapper(config);
 
-                item = new Item(
-                    dataRow["name"].ToString(),
-                    dataRow["Type"].ToString(),
-                    Convert.ToInt32(dataRow["StabAcc"]),
-                    Convert.ToInt32(dataRow["SlashAcc"]),
-                    Convert.ToInt32(dataRow["CrushAcc"]),
-                    Convert.ToInt32(dataRow["MagicAcc"]),
-                    Convert.ToInt32(dataRow["RangedAcc"]),
-                    Convert.ToInt32(dataRow["StabDef"]),
-                    Convert.ToInt32(dataRow["SlashDef"]),
-                    Convert.ToInt32(dataRow["CrushDef"]),
-                    Convert.ToInt32(dataRow["MagicDef"]),
-                    Convert.ToInt32(dataRow["RangedDef"]),
-                    Convert.ToInt32(dataRow["StrengthBonus"]),
-                    Convert.ToInt32(dataRow["RangedStrength"]),
-                    Convert.ToInt32(dataRow["MagicStrength"]),
-                    Convert.ToInt32(dataRow["PrayerBonus"])
-                );
-
-            }
+            item = mapper.Map<Item>(itemDTO);
 
             return item;
         }
@@ -56,31 +36,16 @@ namespace OSGPLogic
         /// </summary>
         /// <param name="itemTable"></param>
         /// <returns></returns>
-        public List<Item> dataTableToList(DataTable itemTable)
+        public List<Item> itemDTOListToItem(List<ItemDTO> itemDTOList)
         {
             List<Item> ItemList = new List<Item>();
 
-            foreach(DataRow row in itemTable.Rows)
+            MapperConfiguration config = new MapperConfiguration(cfg => cfg.CreateMap<ItemDTO, Item>());
+            Mapper mapper = new Mapper(config);
+
+            foreach (ItemDTO itemDTO in itemDTOList)
             {
-                ItemList.Add(new Item(
-                        row["name"].ToString(),
-                        row["Type"].ToString(),
-                        Convert.ToInt32(row["StabAcc"]),
-                        Convert.ToInt32(row["SlashAcc"]),
-                        Convert.ToInt32(row["CrushAcc"]),
-                        Convert.ToInt32(row["RangedAcc"]),
-                        Convert.ToInt32(row["MagicAcc"]),
-                        Convert.ToInt32(row["StabDef"]),
-                        Convert.ToInt32(row["SlashDef"]),
-                        Convert.ToInt32(row["CrushDef"]),
-                        Convert.ToInt32(row["RangedDef"]),
-                        Convert.ToInt32(row["MagicDef"]),
-                        Convert.ToInt32(row["StrengthBonus"]),
-                        Convert.ToInt32(row["RangedStrength"]),
-                        Convert.ToInt32(row["MagicStrength"]),
-                        Convert.ToInt32(row["PrayerBonus"])
-                    )
-                );
+                ItemList.Add(mapper.Map<Item>(itemDTO));
             }
 
             return ItemList;
@@ -103,10 +68,10 @@ namespace OSGPLogic
         {
             // Declare an empty handler so we can use it
             ItemHandler itemHandler = new ItemHandler();
-            DataTable itemTable = itemHandler.getItemByName(itemName);
+            ItemDTO itemDTO = itemHandler.getItemByName(itemName);
 
             // Convert the datatable to a usable logic class
-            Item item = dataTableToItem(itemTable);
+            Item item = itemDTOToItem(itemDTO);
 
             // Item name must be lower case
             APIReturn apiReturn = APIContainer.GetInfoItem(itemName.ToLower());
@@ -148,9 +113,9 @@ namespace OSGPLogic
         public List<Item> getItemsFromType(string type)
         {
             ItemHandler itemHandler = new ItemHandler();
-            DataTable itemsByType = itemHandler.getItemsFromType(type);
+            List<ItemDTO> itemsByType = itemHandler.getItemsFromType(type);
 
-            List<Item> itemList = this.dataTableToList(itemsByType);
+            List<Item> itemList = this.itemDTOListToItem(itemsByType);
 
             return itemList;
         }

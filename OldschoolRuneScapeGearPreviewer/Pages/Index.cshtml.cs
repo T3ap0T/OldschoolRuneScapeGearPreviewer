@@ -104,18 +104,7 @@ namespace OldschoolRuneScapeGearPreviewer.Pages
         /// </summary>
         public void OnGet()
         {
-            // This does not function yet
 
-            // Due to this method always being called when the page loads we can do some ViewData stuff
-            if (BitConverter.ToBoolean(HttpContext.Session.Get("LoggedIn")))
-            {
-                ViewData["LoggedIn"] = 1;
-                ViewData["Username"] = HttpContext.Session.GetString("Username");
-            }
-            else
-            {
-                ViewData["LoggedIn"] = 0;
-            }
         }
     }
 }

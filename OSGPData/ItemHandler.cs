@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using Org.BouncyCastle.Math.EC.Multiplier;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -39,10 +40,10 @@ namespace OSGPData
         /// retrieves an item by its name
         /// </summary>
         /// <returns></returns>
-        public DataTable getItemByName(string itemName)
+        public ItemDTO getItemByName(string itemName)
         {
-            // Create empty datatable so we can fill it and return it
-            DataTable dataTable = new DataTable();
+            // Create empty ItemDTO object so we can fill it and return it
+            ItemDTO itemDTO = new ItemDTO();
 
             // Create a using clause so everything will be disposed when the block ends
             using (MySqlConnection conn = Connection.getConnection())
@@ -56,17 +57,39 @@ namespace OSGPData
                 cmd.CommandText = "SELECT * FROM item WHERE Name = @name";
                 cmd.Parameters.AddWithValue("@name", itemName);
 
-                // Read what we get back and throw it in a datatable for Logic layer use
+                // Fill the variables 
                 using (MySqlDataReader dr = cmd.ExecuteReader())
                 {
-                    dataTable.Load(dr);
+                    dr.Read();
+
+                    itemDTO.Name = dr.GetString("Name");
+                    itemDTO.Type = dr.GetString("Type");
+
+                    itemDTO.StabAcc = dr.GetInt32("StabAcc");
+                    itemDTO.SlashAcc = dr.GetInt32("StabAcc");
+                    itemDTO.CrushAcc = dr.GetInt32("CrushAcc");
+                    itemDTO.MagicAcc = dr.GetInt32("MagicAcc");
+                    itemDTO.RangedAcc = dr.GetInt32("RangedAcc");
+
+                    itemDTO.StabDef = dr.GetInt32("StabDef");
+                    itemDTO.SlashDef = dr.GetInt32("SlashDef");
+                    itemDTO.CrushDef = dr.GetInt32("CrushDef");
+                    itemDTO.MagicDef = dr.GetInt32("MagicDef");
+                    itemDTO.RangedDef = dr.GetInt32("RangedDef");
+
+                    itemDTO.StrengthBonus = dr.GetInt32("StrengthBonus");
+                    itemDTO.RangedStrength = dr.GetInt32("RangedStrength");
+                    itemDTO.MagicStrength = dr.GetInt32("MagicStrength");
+                    itemDTO.PrayerBonus = dr.GetInt32("PrayerBonus");
+
+                    dr.Close();
                 }
 
                 // Close the connection
                 conn.Close();
             }
 
-            return dataTable;
+            return itemDTO;
         }
 
         /// <summary>
@@ -101,10 +124,10 @@ namespace OSGPData
         /// </summary>
         /// <param name="type"></param>
         /// <returns></returns>
-        public DataTable getItemsFromType(string type)
+        public List<ItemDTO> getItemsFromType(string type)
         {
             // Create empty datatable so we can fill it and return it
-            DataTable dataTable = new DataTable();
+            List<ItemDTO> itemDTOList = new List<ItemDTO>();
 
             // Create a using clause so everything will be disposed when the block ends
             using (MySqlConnection conn = Connection.getConnection())
@@ -118,17 +141,43 @@ namespace OSGPData
                 cmd.CommandText = "SELECT * FROM item WHERE Type = @type";
                 cmd.Parameters.AddWithValue("@type", type);
 
-                // Read what we get back and throw it in a datatable for Logic layer use
+                // Read and create a DTO Object
                 using (MySqlDataReader dr = cmd.ExecuteReader())
                 {
-                    dataTable.Load(dr);
+                    while (dr.Read())
+                    {
+                        // Create a DTO object and fill it
+                        ItemDTO itemDTO = new ItemDTO();
+                        itemDTO.Name = dr.GetString("Name");
+                        itemDTO.Type = dr.GetString("Type");
+
+                        itemDTO.StabAcc = dr.GetInt32("StabAcc");
+                        itemDTO.SlashAcc = dr.GetInt32("StabAcc");
+                        itemDTO.CrushAcc = dr.GetInt32("CrushAcc");
+                        itemDTO.MagicAcc = dr.GetInt32("MagicAcc");
+                        itemDTO.RangedAcc = dr.GetInt32("RangedAcc");
+
+                        itemDTO.StabDef = dr.GetInt32("StabDef");
+                        itemDTO.SlashDef = dr.GetInt32("SlashDef");
+                        itemDTO.CrushDef = dr.GetInt32("CrushDef");
+                        itemDTO.MagicDef = dr.GetInt32("MagicDef");
+                        itemDTO.RangedDef = dr.GetInt32("RangedDef");
+
+                        itemDTO.StrengthBonus = dr.GetInt32("StrengthBonus");
+                        itemDTO.RangedStrength = dr.GetInt32("RangedStrength");
+                        itemDTO.MagicStrength = dr.GetInt32("MagicStrength");
+                        itemDTO.PrayerBonus = dr.GetInt32("PrayerBonus");
+                        
+                        // Add the new DTO object to the list
+                        itemDTOList.Add(itemDTO);
+                    }
                 }
 
                 // Close the connection
                 conn.Close();
             }
 
-            return dataTable;
+            return itemDTOList;
         }
     }
 }

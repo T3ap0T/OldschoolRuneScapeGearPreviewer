@@ -51,11 +51,13 @@ namespace OSGPLogic
         public string name
         {
             get { return Name; }   // get method
+            set { Name = value; }
         }
 
         public string type
         {
             get { return Type; }   // get method
+            set { Type = value; }
         }
 
         public string price
@@ -73,71 +75,85 @@ namespace OSGPLogic
         public int stabAcc
         {
             get { return StabAcc; }   // get method
+            set { StabAcc = value; }
         }
 
         public int slashAcc
         {
             get { return SlashAcc; }   // get method
+            set { SlashAcc = value; }
         }
 
         public int crushAcc
         {
             get { return CrushAcc; }   // get method
+            set { CrushAcc = value; }
         }
 
         public int magicAcc
         {
             get { return MagicAcc; }   // get method
+            set { MagicAcc = value; }
         }
 
         public int rangedAcc
         {
             get { return RangedAcc; }   // get method
+            set { RangedAcc = value; }
         }
 
         public int stabDef
         {
             get { return StabDef; }   // get method
+            set { StabDef = value; }
         }
 
         public int slashDef
         {
             get { return SlashDef; }   // get method
+            set { SlashDef = value; }
         }
 
         public int crushDef
         {
             get { return CrushDef; }   // get method
+            set { CrushDef = value; }
         }
 
         public int magicDef
         {
             get { return MagicDef; }   // get method
+            set { MagicDef = value; }
         }
 
         public int rangedDef
         {
             get { return RangedDef; }   // get method
+            set { RangedDef = value; }
         }
 
         public int strengthBonus
         {
             get { return StrengthBonus; }   // get method
+            set { StrengthBonus = value; }
         }
 
         public int rangedStrength
         {
             get { return RangedStrength; }   // get method
+            set { RangedStrength = value; }
         }
 
         public int magicStrength
         {
             get { return MagicStrength; }   // get method
+            set { MagicStrength = value; }
         }
 
         public int prayerBonus
         {
             get { return PrayerBonus; }   // get method
+            set { PrayerBonus = value; }
         }
         #endregion
 
